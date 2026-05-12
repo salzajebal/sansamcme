@@ -59,7 +59,7 @@ function Label({ text }: { text: string }) {
 export default function ExploreSection() {
   return (
     <section className="w-full bg-white border-t border-[#D9E0E5] py-12 px-6">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1100px] mx-auto">
         <h2 className="text-[#3A464F] text-[28px] font-light mb-8">
           Explore this product in depth
         </h2>

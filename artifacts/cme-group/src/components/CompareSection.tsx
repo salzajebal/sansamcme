@@ -44,7 +44,7 @@ export default function CompareSection() {
 
   return (
     <section className="w-full bg-[#1D4B6E] py-12 px-6">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1100px] mx-auto">
         <h2 className="text-white text-[28px] font-light mb-8">
           Compare E-mini Nasdaq-100 with other trading methods
         </h2>

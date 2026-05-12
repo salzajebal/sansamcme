@@ -78,7 +78,7 @@ export default function CmeMarket() {
 
       {/* Two-column overview area */}
       <div className="w-full bg-[#F1F5F7]">
-        <div className="max-w-[1400px] mx-auto px-6 py-8">
+        <div className="max-w-[1100px] mx-auto px-6 py-8">
           <div className="flex flex-col lg:flex-row gap-6">
             <MainContent />
             <Sidebar />
@@ -96,7 +96,7 @@ export default function CmeMarket() {
       <footer className="bg-white border-t border-[#D9E0E5]">
 
         {/* Top: 4-column link grid */}
-        <div className="max-w-[1400px] mx-auto px-6 py-12">
+        <div className="max-w-[1100px] mx-auto px-6 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {footerColumns.map((col) => (
               <div key={col.title}>
@@ -122,7 +122,7 @@ export default function CmeMarket() {
 
         {/* Middle: Social icons + language selector */}
         <div className="border-t border-[#D9E0E5]">
-          <div className="max-w-[1400px] mx-auto px-6 py-5 flex items-center justify-between">
+          <div className="max-w-[1100px] mx-auto px-6 py-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
               {socialIcons.map(({ Icon, label }) => (
                 <a
@@ -144,7 +144,7 @@ export default function CmeMarket() {
 
         {/* Bottom: dark gray strip */}
         <div className="bg-[#3A4F5E]">
-          <div className="max-w-[1400px] mx-auto px-6 py-5">
+          <div className="max-w-[1100px] mx-auto px-6 py-5">
             <p className="text-white/70 text-[12px] leading-relaxed mb-3">
               Nq Capital Group is the world's leading derivatives marketplace. The company is comprised of four Designated Contract Markets (DCMs).{" "}
               Further information on each exchange's rules and product listings can be found by clicking on the links to{" "}

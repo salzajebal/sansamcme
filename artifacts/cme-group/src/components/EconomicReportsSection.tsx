@@ -57,7 +57,7 @@ export default function EconomicReportsSection() {
 
   return (
     <section className="w-full bg-white py-12 px-6 border-t border-[#D9E0E5]">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1100px] mx-auto">
         <h2 className="text-[#3A464F] text-[26px] font-light mb-8">
           Key economic reports and factors that move markets
         </h2>

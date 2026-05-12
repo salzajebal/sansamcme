@@ -30,7 +30,7 @@ const downloadItems = [
 export default function DownloadSection() {
   return (
     <section className="w-full bg-[#F1F5F7] border-t border-[#D9E0E5] py-14 px-6">
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1100px] mx-auto">
         <h2 className="text-[#3A464F] text-[26px] font-light mb-2">
           Download Trading Platforms
         </h2>

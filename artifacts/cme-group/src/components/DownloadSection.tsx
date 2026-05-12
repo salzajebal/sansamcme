@@ -4,25 +4,25 @@ const downloadItems = [
   {
     id: "mts",
     icon: Smartphone,
-    label: "모바일 전용 설치",
+    label: "Mobile Trading System",
     abbr: "MTS",
-    description: "스마트폰에서 언제 어디서나 실시간 시세 확인 및 주문 실행",
+    description: "Access real-time quotes and execute orders anytime, anywhere from your smartphone.",
     href: "#",
   },
   {
     id: "hts",
     icon: Monitor,
-    label: "PC 전용 설치",
+    label: "Desktop Trading System",
     abbr: "HTS",
-    description: "PC 전용 고성능 트레이딩 시스템으로 빠르고 안정적인 거래 환경 제공",
+    description: "High-performance PC-based trading platform for fast, stable order execution and advanced charting.",
     href: "#",
   },
   {
     id: "wts",
     icon: Globe,
-    label: "웹 트레이딩 시스템",
+    label: "Web Trading System",
     abbr: "WTS",
-    description: "별도 설치 없이 웹 브라우저에서 바로 접속하는 트레이딩 플랫폼",
+    description: "Trade directly from any web browser — no installation required.",
     href: "#",
   },
 ];
@@ -32,10 +32,10 @@ export default function DownloadSection() {
     <section className="w-full bg-[#F1F5F7] border-t border-[#D9E0E5] py-14 px-6">
       <div className="max-w-[1400px] mx-auto">
         <h2 className="text-[#3A464F] text-[26px] font-light mb-2">
-          트레이딩 플랫폼 다운로드
+          Download Trading Platforms
         </h2>
         <p className="text-[#5A6874] text-[14px] mb-10">
-          Nq Capital Group의 트레이딩 플랫폼을 선택하여 설치하세요.
+          Choose a Nq Capital Group trading platform and get started today.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -70,7 +70,7 @@ export default function DownloadSection() {
                   className="flex items-center justify-center gap-2 bg-[#006EB6] hover:bg-[#005a96] text-white text-[13px] font-bold uppercase tracking-wide py-3 px-6 transition-colors"
                 >
                   <Download size={15} />
-                  다운로드
+                  Download
                 </a>
               </div>
             );

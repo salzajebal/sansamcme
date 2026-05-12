@@ -94,10 +94,11 @@ export default function HeroSection() {
       </div>
 
       {/* Stats Row */}
-      <div className="px-6 pt-6 pb-0 flex flex-wrap gap-y-6 justify-between items-end">
-        <div className="flex flex-wrap gap-12">
+      <div className="px-6 pt-6 pb-0 flex items-end justify-between gap-y-6">
+        {/* Stats group — flex-1 so columns fill width, pushing WATCHLISTS close to VOLUME */}
+        <div className="flex flex-1 items-end">
           {/* Globex Code */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 flex-[0_0_180px]">
             <div className="flex items-center gap-1 text-white/60 uppercase text-[11px] tracking-widest font-semibold">
               Globex Code <Info size={12} className="cursor-pointer" />
             </div>
@@ -107,7 +108,7 @@ export default function HeroSection() {
           </div>
 
           {/* Last */}
-          <div className="flex flex-col gap-1" data-testid="stat-last">
+          <div className="flex flex-col gap-1 flex-[0_0_175px]" data-testid="stat-last">
             <div className="text-white/60 uppercase text-[11px] tracking-widest font-semibold">
               Last
             </div>
@@ -117,7 +118,7 @@ export default function HeroSection() {
           </div>
 
           {/* Change */}
-          <div className="flex flex-col gap-1" data-testid="stat-change">
+          <div className="flex flex-col gap-1 flex-1" data-testid="stat-change">
             <div className="text-white/60 uppercase text-[11px] tracking-widest font-semibold">
               Change
             </div>
@@ -130,7 +131,7 @@ export default function HeroSection() {
           </div>
 
           {/* Volume */}
-          <div className="flex flex-col gap-1" data-testid="stat-volume">
+          <div className="flex flex-col gap-1 flex-[0_0_220px]" data-testid="stat-volume">
             <div className="text-white/60 uppercase text-[11px] tracking-widest font-semibold">
               Volume
             </div>
@@ -140,8 +141,8 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Watchlist Button */}
-        <button className="bg-[#006EB6] hover:bg-[#005a96] text-white px-5 py-2.5 text-[13px] font-bold uppercase tracking-wide flex items-center gap-2 transition-colors">
+        {/* Watchlist Button — sits right after the stats */}
+        <button className="shrink-0 bg-[#006EB6] hover:bg-[#005a96] text-white px-5 py-2.5 text-[13px] font-bold uppercase tracking-wide flex items-center gap-2 transition-colors">
           <Star size={16} fill="currentColor" /> Watchlists
         </button>
       </div>

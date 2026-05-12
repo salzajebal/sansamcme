@@ -72,7 +72,7 @@ export default function CmeMarket() {
               ))}
             </div>
             <p className="text-white/40 text-[12px] whitespace-nowrap">
-              © 2026 CME Group Inc. All rights reserved.
+              © 2026 Nq Capital Group Inc. All rights reserved.
             </p>
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function CmeMarket() {
         <div className="border-t border-white/10">
           <div className="max-w-[1400px] mx-auto px-6 py-4">
             <p className="text-white/30 text-[11px] leading-relaxed">
-              CME Group is the world's leading derivatives marketplace. The company is comprised of four Designated Contract Markets (DCMs). Further information on each exchange's rules and product listings can be found by clicking on the links to CME, CBOT, NYMEX and COMEX.
+              Nq Capital Group is the world's leading derivatives marketplace. The company is comprised of four Designated Contract Markets (DCMs). Further information on each exchange's rules and product listings can be found by clicking on the links to CME, CBOT, NYMEX and COMEX.
             </p>
           </div>
         </div>

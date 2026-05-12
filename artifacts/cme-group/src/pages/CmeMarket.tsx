@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import TabNav from "@/components/TabNav";
 import MainContent from "@/components/MainContent";
 import Sidebar from "@/components/Sidebar";
-import cmeLogoPath from "@assets/cme-logo.svg";
+import nqGlobePath from "@assets/nq-globe.svg";
 
 const footerLinks = {
   Markets: ["Equities", "Interest Rates", "FX", "Agricultural", "Energy", "Metals", "Real Estate"],
@@ -57,8 +57,9 @@ export default function CmeMarket() {
         {/* Footer bottom bar */}
         <div className="border-t border-white/10">
           <div className="max-w-[1400px] mx-auto px-6 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <img src={cmeLogoPath} alt="CME Group" className="h-4 brightness-0 invert opacity-60" />
+            <div className="flex items-center gap-2">
+              <img src={nqGlobePath} alt="Nq Capital Group" className="h-4 brightness-0 invert opacity-60" />
+              <span className="text-white/60 text-[13px] font-bold tracking-wide">Nq Capital Group</span>
             </div>
             <div className="flex flex-wrap gap-x-6 gap-y-2">
               {["Privacy Policy", "Terms of Use", "Cookie Policy", "Sitemap", "Contact Us"].map((item) => (

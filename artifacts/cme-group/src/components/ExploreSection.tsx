@@ -114,9 +114,6 @@ export default function ExploreSection() {
               View full contract specs
             </a>
 
-            <p className="text-[#5A6874] text-[11px] mt-3 italic">
-              Last Updated 11 May 2026 09:30:12 PM CT
-            </p>
           </div>
 
           {/* Right: Daily Volume Chart */}

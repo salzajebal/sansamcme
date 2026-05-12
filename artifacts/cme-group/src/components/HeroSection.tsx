@@ -159,11 +159,9 @@ export default function HeroSection() {
               size={11}
               className={`text-white/40 ${loading ? "animate-spin" : ""}`}
             />
-            <p className="text-white/50 text-[12px] italic">
-              {lastFetched
-                ? `Last Updated ${lastFetched}. Market data is delayed by at least 10 minutes`
-                : "Loading market data..."}
-            </p>
+            {!lastFetched && (
+              <p className="text-white/50 text-[12px] italic">Loading market data...</p>
+            )}
           </>
         )}
       </div>

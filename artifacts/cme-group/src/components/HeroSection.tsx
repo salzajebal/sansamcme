@@ -102,7 +102,7 @@ export default function HeroSection() {
               Globex Code <Info size={12} className="cursor-pointer" />
             </div>
             <div className="border border-white/50 text-white px-2 py-0.5 text-[15px] font-medium inline-block w-fit">
-              NQ=F
+              NQM6
             </div>
           </div>
 

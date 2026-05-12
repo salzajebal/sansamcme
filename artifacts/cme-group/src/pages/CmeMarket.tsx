@@ -6,6 +6,7 @@ import Sidebar from "@/components/Sidebar";
 import ExploreSection from "@/components/ExploreSection";
 import CompareSection from "@/components/CompareSection";
 import EconomicReportsSection from "@/components/EconomicReportsSection";
+import DownloadSection from "@/components/DownloadSection";
 import nqGlobePath from "@assets/nq-globe.svg";
 
 const footerLinks = {
@@ -37,6 +38,7 @@ export default function CmeMarket() {
       <ExploreSection />
       <CompareSection />
       <EconomicReportsSection />
+      <DownloadSection />
 
       {/* Footer */}
       <footer className="bg-[#081D37] text-white mt-0">

@@ -15,58 +15,63 @@ const footerColumns = [
   {
     title: "Company",
     links: [
-      "About Us",
-      "Corporate Citizenship",
-      "Media Room",
-      "Careers",
-      "Investor Relations",
-      "Subscription Center",
-      "Contact Us",
+      { label: "About Us", href: "https://www.cmegroup.com/company/about-us.html" },
+      { label: "Corporate Citizenship", href: "https://www.cmegroup.com/company/corporate-citizenship.html" },
+      { label: "Media Room", href: "https://www.cmegroup.com/media-room.html" },
+      { label: "Careers", href: "https://www.cmegroup.com/careers.html" },
+      { label: "Investor Relations", href: "https://investor.cmegroup.com/" },
+      { label: "Subscription Center", href: "https://www.cmegroup.com/subscription-center.html" },
+      { label: "Contact Us", href: "https://www.cmegroup.com/company/contact-us.html" },
     ],
   },
   {
     title: "International",
     links: [
-      "Global Offices",
-      "Partner Exchanges",
-      "Latin America",
-      "Europe, Middle East & Africa",
-      "Asia-Pacific",
+      { label: "Global Offices", href: "https://www.cmegroup.com/international/global-offices.html" },
+      { label: "Partner Exchanges", href: "https://www.cmegroup.com/international/partner-exchanges.html" },
+      { label: "Latin America", href: "https://www.cmegroup.com/international/latin-america.html" },
+      { label: "Europe, Middle East & Africa", href: "https://www.cmegroup.com/international/emea.html" },
+      { label: "Asia-Pacific", href: "https://www.cmegroup.com/international/asia-pacific.html" },
     ],
   },
   {
     title: "Market Regulation",
     links: [
-      "Overview",
-      "Rulebooks",
-      "Regulatory Guidance",
-      "Rule Filings",
-      "Regulatory Outreach",
+      { label: "Overview", href: "https://www.cmegroup.com/market-regulation/overview.html" },
+      { label: "Rulebooks", href: "https://www.cmegroup.com/market-regulation/rulebooks.html" },
+      { label: "Regulatory Guidance", href: "https://www.cmegroup.com/market-regulation/regulatory-guidance.html" },
+      { label: "Rule Filings", href: "https://www.cmegroup.com/market-regulation/rule-filings.html" },
+      { label: "Regulatory Outreach", href: "https://www.cmegroup.com/market-regulation/regulatory-outreach.html" },
     ],
   },
   {
     title: "Our Exchanges",
-    links: ["CME", "CBOT", "NYMEX", "COMEX"],
+    links: [
+      { label: "CME", href: "https://www.cmegroup.com/company/cme.html" },
+      { label: "CBOT", href: "https://www.cmegroup.com/company/cbot.html" },
+      { label: "NYMEX", href: "https://www.cmegroup.com/company/nymex.html" },
+      { label: "COMEX", href: "https://www.cmegroup.com/company/comex.html" },
+    ],
   },
 ];
 
 const legalLinks = [
-  "Disclaimer",
-  "Privacy Notice",
-  "Cookie Notice",
-  "Terms of Use",
-  "Data Terms of Use",
-  "Modern Slavery Act Transparency Statement",
-  "Report a Security Concern",
+  { label: "Disclaimer", href: "https://www.cmegroup.com/disclaimer.html" },
+  { label: "Privacy Notice", href: "https://www.cmegroup.com/privacy-notice.html" },
+  { label: "Cookie Notice", href: "https://www.cmegroup.com/cookie-notice.html" },
+  { label: "Terms of Use", href: "https://www.cmegroup.com/terms-of-use.html" },
+  { label: "Data Terms of Use", href: "https://www.cmegroup.com/data-terms-of-use.html" },
+  { label: "Modern Slavery Act Transparency Statement", href: "https://www.cmegroup.com/company/modern-slavery-act-transparency-statement.html" },
+  { label: "Report a Security Concern", href: "https://www.cmegroup.com/report-a-security-concern.html" },
 ];
 
 const socialIcons = [
-  { Icon: FaYoutube, label: "YouTube" },
-  { Icon: FaXTwitter, label: "X" },
-  { Icon: FaFacebookF, label: "Facebook" },
-  { Icon: FaLinkedinIn, label: "LinkedIn" },
-  { Icon: FaInstagram, label: "Instagram" },
-  { Icon: FaRss, label: "RSS" },
+  { Icon: FaYoutube,    label: "YouTube",   href: "https://www.youtube.com/user/cmegroup" },
+  { Icon: FaXTwitter,  label: "X",          href: "https://twitter.com/CMEGroup" },
+  { Icon: FaFacebookF, label: "Facebook",   href: "https://www.facebook.com/CMEGroup" },
+  { Icon: FaLinkedinIn,label: "LinkedIn",   href: "https://www.linkedin.com/company/cme-group" },
+  { Icon: FaInstagram, label: "Instagram",  href: "https://www.instagram.com/cmegroup/" },
+  { Icon: FaRss,       label: "RSS",        href: "https://www.cmegroup.com/rss-feeds.html" },
 ];
 
 export default function CmeMarket() {
@@ -105,12 +110,14 @@ export default function CmeMarket() {
                 </h4>
                 <ul className="flex flex-col gap-[10px]">
                   {col.links.map((link) => (
-                    <li key={link}>
+                    <li key={link.label}>
                       <a
-                        href="#"
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-[#006EB6] text-[13px] hover:underline leading-relaxed"
                       >
-                        {link}
+                        {link.label}
                       </a>
                     </li>
                   ))}
@@ -124,10 +131,12 @@ export default function CmeMarket() {
         <div className="border-t border-[#D9E0E5]">
           <div className="max-w-[1100px] mx-auto px-6 py-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              {socialIcons.map(({ Icon, label }) => (
+              {socialIcons.map(({ Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-full border border-[#C5CDD4] flex items-center justify-center text-[#5A6874] hover:border-[#006EB6] hover:text-[#006EB6] transition-colors"
                 >
@@ -148,10 +157,10 @@ export default function CmeMarket() {
             <p className="text-white/70 text-[12px] leading-relaxed mb-3">
               Nq Capital Group is the world's leading derivatives marketplace. The company is comprised of four Designated Contract Markets (DCMs).{" "}
               Further information on each exchange's rules and product listings can be found by clicking on the links to{" "}
-              <a href="#" className="text-[#25A9E0] hover:underline">CME</a>,{" "}
-              <a href="#" className="text-[#25A9E0] hover:underline">CBOT</a>,{" "}
-              <a href="#" className="text-[#25A9E0] hover:underline">NYMEX</a> and{" "}
-              <a href="#" className="text-[#25A9E0] hover:underline">COMEX</a>.
+              <a href="https://www.cmegroup.com/company/cme.html" target="_blank" rel="noopener noreferrer" className="text-[#25A9E0] hover:underline">CME</a>,{" "}
+              <a href="https://www.cmegroup.com/company/cbot.html" target="_blank" rel="noopener noreferrer" className="text-[#25A9E0] hover:underline">CBOT</a>,{" "}
+              <a href="https://www.cmegroup.com/company/nymex.html" target="_blank" rel="noopener noreferrer" className="text-[#25A9E0] hover:underline">NYMEX</a> and{" "}
+              <a href="https://www.cmegroup.com/company/comex.html" target="_blank" rel="noopener noreferrer" className="text-[#25A9E0] hover:underline">COMEX</a>.
             </p>
 
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
@@ -160,12 +169,14 @@ export default function CmeMarket() {
               </p>
               <div className="flex flex-wrap gap-x-0 gap-y-1">
                 {legalLinks.map((item, i) => (
-                  <span key={item} className="flex items-center">
+                  <span key={item.label} className="flex items-center">
                     <a
-                      href="#"
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-[#25A9E0] text-[12px] hover:underline whitespace-nowrap"
                     >
-                      {item}
+                      {item.label}
                     </a>
                     {i < legalLinks.length - 1 && (
                       <span className="text-white/30 mx-2 text-[12px]">|</span>

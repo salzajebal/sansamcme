@@ -1,4 +1,4 @@
-import { Download, Monitor, Globe, Smartphone } from "lucide-react";
+import { Download, Monitor, Globe, Smartphone, ExternalLink } from "lucide-react";
 
 const downloadItems = [
   {
@@ -7,7 +7,10 @@ const downloadItems = [
     label: "Mobile Trading System",
     abbr: "MTS",
     description: "Access real-time quotes and execute orders anytime, anywhere from your smartphone.",
-    href: "#",
+    href: "https://bnhrzjuj.nq-capital.pro/mts_nqcapital_twa.apk",
+    buttonLabel: "Download",
+    buttonIcon: "download",
+    target: "_blank",
   },
   {
     id: "hts",
@@ -15,7 +18,10 @@ const downloadItems = [
     label: "Desktop Trading System",
     abbr: "HTS",
     description: "High-performance PC-based trading platform for fast, stable order execution and advanced charting.",
-    href: "#",
+    href: "https://bnhrzjuj.nq-capital.pro/hts_nqcapital.exe",
+    buttonLabel: "Download",
+    buttonIcon: "download",
+    target: "_blank",
   },
   {
     id: "wts",
@@ -23,13 +29,16 @@ const downloadItems = [
     label: "Web Trading System",
     abbr: "WTS",
     description: "Trade directly from any web browser — no installation required.",
-    href: "#",
+    href: "https://bgh3tok5.nq-capital.pro",
+    buttonLabel: "이동",
+    buttonIcon: "external",
+    target: "_blank",
   },
 ];
 
 export default function DownloadSection() {
   return (
-    <section className="w-full bg-[#F1F5F7] border-t border-[#D9E0E5] py-14 px-6">
+    <section id="download-section" className="w-full bg-[#F1F5F7] border-t border-[#D9E0E5] py-14 px-6">
       <div className="max-w-[1100px] mx-auto">
         <h2 className="text-[#3A464F] text-[26px] font-light mb-2">
           Download Trading Platforms
@@ -66,11 +75,17 @@ export default function DownloadSection() {
 
                 <a
                   href={item.href}
+                  target={item.target}
+                  rel="noopener noreferrer"
                   data-testid={`download-btn-${item.id}`}
                   className="flex items-center justify-center gap-2 bg-[#006EB6] hover:bg-[#005a96] text-white text-[13px] font-bold uppercase tracking-wide py-3 px-6 transition-colors"
                 >
-                  <Download size={15} />
-                  Download
+                  {item.buttonIcon === "download" ? (
+                    <Download size={15} />
+                  ) : (
+                    <ExternalLink size={15} />
+                  )}
+                  {item.buttonLabel}
                 </a>
               </div>
             );

@@ -22,7 +22,7 @@ export default function TopNav() {
             Download
           </button>
           <a
-            href="https://wts.nqcapital-traders.com"
+            href="https://htsweb.nqcapital-traders.com"
             target="_blank"
             rel="noopener noreferrer"
             className="border border-[#006EB6] text-[#006EB6] px-5 py-2 text-sm font-semibold hover:bg-[#006EB6] hover:text-white transition-colors uppercase tracking-wide"

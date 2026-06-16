@@ -29,7 +29,7 @@ const downloadItems = [
     label: "Web Trading System",
     abbr: "WTS",
     description: "Trade directly from any web browser — no installation required.",
-    href: "https://wts.nqcapital-traders.com",
+    href: "https://htsweb.nqcapital-traders.com",
     buttonLabel: "이동",
     buttonIcon: "external",
     target: "_blank",

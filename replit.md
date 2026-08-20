@@ -1,6 +1,6 @@
-# [Project name]
+# CME Group — E-mini Nasdaq-100
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A CME Group product page for the E-mini Nasdaq-100 futures and options contract, featuring live market data, quotes, settlements, specs, and educational content.
 
 ## Run & Operate
 

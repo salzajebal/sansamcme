@@ -52,3 +52,6 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# Database exports are operational backups, not source code.
+backups/

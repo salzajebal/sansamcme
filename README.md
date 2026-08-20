@@ -1,10 +1,57 @@
 # CME Group — E-mini Nasdaq-100
 
-E-mini Nasdaq-100 선물 및 옵션 상품 정보를 제공하는 React 웹 애플리케이션입니다. 정적 프론트엔드는 Nginx가 제공하고, 동일 도메인의 `/api` 요청은 내부 Express API로 전달됩니다. PostgreSQL은 별도 컨테이너와 영속 볼륨으로 실행됩니다.
+E-mini Nasdaq-100 선물 및 옵션 상품 정보를 제공하는 React 웹 애플리케이션입니다. 정적 프론트엔드는 Render에서는 Express가, Docker Compose에서는 Nginx가 제공하며, 동일 도메인의 `/api` 요청은 Express API로 전달됩니다. PostgreSQL은 Supabase 또는 Docker Compose의 영속 볼륨으로 운영할 수 있습니다.
 
-이 저장소는 Replit과 별개로 **DigitalOcean Ubuntu Droplet**에서 Docker Compose로 실행할 수 있도록 구성되어 있습니다.
+이 저장소는 Replit과 별개로 **Render Web Service + Supabase PostgreSQL** 조합 또는 **DigitalOcean Ubuntu Droplet + Docker Compose** 조합으로 실행할 수 있도록 구성되어 있습니다.
 
-## 컨테이너 구성
+## Render + Supabase 배포
+
+Render에서는 루트 `build` 스크립트가 API와 React 프론트엔드를 함께 빌드하고, 루트 `start` 스크립트가 Express 서버 하나로 API와 정적 프론트엔드를 함께 제공합니다. Render의 `PORT`를 그대로 사용하므로 별도의 포트 설정은 필요하지 않습니다.
+
+### 1. Supabase 데이터베이스 준비
+
+1. Supabase에서 프로젝트를 생성합니다.
+2. **Connect → Session pooler**의 PostgreSQL 연결 문자열을 복사합니다. Render는 외부 호스트에서 접속하므로 Supabase의 IPv4 호환 Session Pooler 문자열을 사용하는 편이 안전합니다.
+3. 연결 문자열의 비밀번호가 특수문자를 포함하면 URL 인코딩합니다. 실제 연결 문자열은 GitHub나 채팅에 올리지 마세요.
+4. 현재 프로젝트는 Drizzle ORM과 `pg`를 사용하며 `DATABASE_URL` 하나로 연결됩니다. 별도의 Supabase SDK나 API 키는 필요하지 않습니다.
+
+### 2. Render에 저장소 연결
+
+Render Dashboard에서 **New → Blueprint**를 선택하고 GitHub 저장소 `salzajebal/sansamcme`를 연결한 뒤 `render.yaml`을 적용합니다.
+
+Blueprint가 다음을 자동으로 구성합니다.
+
+- Build Command: `pnpm install --frozen-lockfile && pnpm run build`
+- Pre-deploy Command: `pnpm --filter @workspace/db run push`
+- Start Command: `pnpm start`
+- Health Check: `/api/healthz`
+- GitHub `main` 브랜치 푸시 후 자동 배포
+
+Blueprint를 사용하지 않고 Web Service를 직접 만들 때도 같은 명령을 입력하면 됩니다. Render가 제공하는 `PORT`는 수정하지 마세요.
+
+### 3. Render Environment Variables
+
+Render Dashboard의 **Environment → Environment Variables**에 아래 값을 등록합니다.
+
+| Key | Value | 비고 |
+| --- | --- | --- |
+| `DATABASE_URL` | Supabase Session Pooler PostgreSQL URL | 필수 비밀값. Supabase Connect 화면에서 복사 |
+| `NODE_ENV` | `production` | 운영 실행 모드 |
+| `LOG_LEVEL` | `info` | 선택 사항 |
+
+`PORT`는 Render가 자동 주입합니다. `POSTGRES_DB`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `WEB_PORT`는 Docker Compose용이므로 Render에는 등록하지 않습니다.
+
+### 4. 배포 확인
+
+배포가 끝나면 Render 서비스 URL에서 프론트엔드를 열고 아래 주소가 `{"status":"ok"}`를 반환하는지 확인합니다.
+
+```text
+https://<render-service>.onrender.com/api/healthz
+```
+
+`preDeployCommand`가 Supabase에 Drizzle 스키마를 적용합니다. Supabase Dashboard의 SQL Editor나 Database 화면에서 실제 데이터와 테이블을 확인할 수 있습니다. 현재 저장소의 스키마가 변경되면 다음 배포 때 자동으로 다시 동기화됩니다.
+
+## Docker Compose 컨테이너 구성
 
 | 서비스 | 역할 | 외부 공개 |
 | --- | --- | --- |

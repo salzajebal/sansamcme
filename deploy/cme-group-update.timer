@@ -1,0 +1,11 @@
+[Unit]
+Description=Check GitHub for CME Group application updates
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=5min
+Persistent=true
+Unit=cme-group-update.service
+
+[Install]
+WantedBy=timers.target

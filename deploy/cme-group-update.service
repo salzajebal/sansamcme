@@ -1,5 +1,5 @@
 [Unit]
-Description=Update and redeploy CME Group application from GitHub
+Description=Update and redeploy CME Group application on this DigitalOcean Droplet
 Wants=network-online.target
 After=network-online.target docker.service
 Requires=docker.service

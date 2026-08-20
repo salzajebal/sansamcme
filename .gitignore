@@ -47,3 +47,8 @@ Thumbs.db
 # Replit
 .cache/
 .local/
+
+# Local and server-only configuration. Keep real credentials out of Git.
+.env
+.env.*
+!.env.example

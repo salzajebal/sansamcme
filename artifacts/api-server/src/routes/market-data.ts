@@ -1,5 +1,21 @@
 import { Router } from "express";
 
+interface YahooMarketMeta {
+  regularMarketPrice?: number;
+  previousClose?: number;
+  chartPreviousClose?: number;
+  regularMarketVolume?: number;
+  regularMarketTime?: number;
+}
+
+interface YahooChartResponse {
+  chart?: {
+    result?: Array<{
+      meta?: YahooMarketMeta;
+    }>;
+  };
+}
+
 const router = Router();
 
 router.get("/market-data/nq", async (req, res) => {
@@ -18,10 +34,10 @@ router.get("/market-data/nq", async (req, res) => {
       throw new Error(`Yahoo Finance responded with ${response.status}`);
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as YahooChartResponse;
     const result = data?.chart?.result?.[0];
 
-    if (!result) {
+    if (!result?.meta) {
       throw new Error("No data returned from Yahoo Finance");
     }
 

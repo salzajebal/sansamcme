@@ -22,8 +22,8 @@ Render Dashboard에서 **New → Blueprint**를 선택하고 GitHub 저장소 `s
 Blueprint가 다음을 자동으로 구성합니다.
 
 - Build Command: `pnpm install --frozen-lockfile && pnpm run build`
-- Pre-deploy Command: `pnpm --filter @workspace/db run push`
-- Start Command: `pnpm start`
+- Start Command: `pnpm run start:render`
+- Startup schema sync: `pnpm --filter @workspace/db run push`, followed by `pnpm start`
 - Health Check: `/api/healthz`
 - GitHub `main` 브랜치 푸시 후 자동 배포
 
@@ -49,7 +49,7 @@ Render Dashboard의 **Environment → Environment Variables**에 아래 값을 �
 https://<render-service>.onrender.com/api/healthz
 ```
 
-`preDeployCommand`가 Supabase에 Drizzle 스키마를 적용합니다. Supabase Dashboard의 SQL Editor나 Database 화면에서 실제 데이터와 테이블을 확인할 수 있습니다. 현재 저장소의 스키마가 변경되면 다음 배포 때 자동으로 다시 동기화됩니다.
+`start:render`가 웹 서버를 시작하기 전에 Supabase에 Drizzle 스키마를 적용합니다. 이 방식은 Render 무료 플랜의 Web Service에서도 동작하도록 `preDeployCommand`를 사용하지 않습니다. Supabase Dashboard의 SQL Editor나 Database 화면에서 실제 데이터와 테이블을 확인할 수 있습니다. 현재 저장소의 스키마가 변경되면 다음 재배포·재시작 때 자동으로 다시 동기화됩니다.
 
 ## Docker Compose 컨테이너 구성
 

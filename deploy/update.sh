@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Run this script on the Vultr server from the repository root:
+# Run this script on the DigitalOcean Droplet from the repository root:
 #   bash deploy/update.sh
 #
 # It is deliberately fail-fast: an unsuccessful fetch, merge, or image build

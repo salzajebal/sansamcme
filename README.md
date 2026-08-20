@@ -162,27 +162,28 @@ bash deploy/update.sh
 
 이 스크립트는 `.env`가 없으면 중단하며, `git pull --ff-only`를 사용하므로 서버에서 직접 수정해 Git 이력이 꼬인 경우에도 덮어쓰지 않습니다.
 
-## GitHub Actions 자동 배포
+## GitHub 푸시 후 자동 배포
 
-`.github/workflows/deploy-vultr.yml`은 `main` 브랜치에 푸시될 때 Vultr VPS의 `deploy/update.sh`를 실행합니다. 활성화하려면 GitHub 저장소의 **Settings → Secrets and variables → Actions**에 아래 Repository secrets 네 개를 추가하세요.
+GitHub Actions 비밀 키를 별도로 관리하지 않아도 되도록, VPS가 5분마다 `main` 브랜치를 확인해 변경 사항이 있으면 `deploy/update.sh`를 실행하는 systemd 타이머 파일을 제공합니다. 이 방식은 VPS 재부팅 뒤에도 자동으로 다시 시작됩니다.
 
-| Secret 이름 | 값 |
-| --- | --- |
-| `VULTR_HOST` | VPS의 공인 IP 또는 도메인 |
-| `VULTR_USER` | VPS SSH 사용자명 |
-| `VULTR_APP_DIR` | `/opt/cme-group` |
-| `VULTR_SSH_KEY` | GitHub Actions 전용 SSH 개인 키 전체 내용 |
-
-자동 배포용 키는 로컬 컴퓨터에서 생성하고, 공개 키만 VPS 사용자 계정의 `~/.ssh/authorized_keys`에 추가합니다.
+VPS에서 최초 한 번만 설정합니다.
 
 ```bash
-ssh-keygen -t ed25519 -f ~/.ssh/cme-group-github-actions -C "github-actions-cme-group"
-ssh-copy-id -i ~/.ssh/cme-group-github-actions.pub USER@VPS_IP
+cd /opt/cme-group
+sudo cp deploy/cme-group-update.service /etc/systemd/system/
+sudo cp deploy/cme-group-update.timer /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now cme-group-update.timer
+systemctl list-timers cme-group-update.timer
 ```
 
-생성된 개인 키 파일(`~/.ssh/cme-group-github-actions`)의 전체 내용을 `VULTR_SSH_KEY` Secret으로 등록하세요. 개인 키는 채팅, 소스 코드, `.env` 어디에도 저장하지 마세요.
+타이머 로그 확인:
 
-이제 Replit에서 변경 후 다음을 실행하면 GitHub Actions가 자동 배포를 시작합니다.
+```bash
+sudo journalctl -u cme-group-update.service -f
+```
+
+이후 Replit에서 변경 후 GitHub `main` 브랜치로 푸시하면, VPS가 최대 5분 안에 최신 코드를 받아 컨테이너를 다시 빌드·배포합니다.
 
 ```bash
 git add .
@@ -190,7 +191,7 @@ git commit -m "설명"
 git push origin main
 ```
 
-배포 상태는 GitHub 저장소의 **Actions → Deploy to Vultr**에서 확인할 수 있습니다.
+Replit 터미널에서 `Invalid username or token` 오류가 나오면 GitHub 소스 제어 연결을 다시 인증한 뒤 푸시하세요. 개인 액세스 토큰이나 SSH 개인 키는 채팅이나 코드에 붙여 넣지 마세요.
 
 ## 운영 점검 및 백업
 

@@ -1,5 +1,5 @@
 [Unit]
-Description=Check GitHub for CME Group application updates
+Description=Check GitHub for CME Group application updates on this Droplet
 
 [Timer]
 OnBootSec=5min

@@ -1,0 +1,1 @@
+- [GitHub connector path calls](github-connector-paths.md) — Prefer literal proxy paths in CodeExecution; dynamic strings can fail sandbox path validation.
